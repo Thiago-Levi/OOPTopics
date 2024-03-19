@@ -41,17 +41,20 @@ class Worker
 
   public double Income(int month, int year)
   {
+    double totalIncoming = 0.0;
 
     foreach (var contract in contracts)
     {
 
+
       if (contract.date.Month == month && contract.date.Year == year)
       {
         System.Console.WriteLine($"Achei -> {contract.TotalValue()}");
+        totalIncoming += contract.TotalValue();
       }
     }
 
-    return 0.0;
+    return totalIncoming;
   }
 
 
