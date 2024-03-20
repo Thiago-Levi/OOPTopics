@@ -1,11 +1,11 @@
 
 
 
-enum WorkerLevel
+enum WorkerLevel : int
 {
-  JUNIOR = 0,
-  MID_LEVEL = 1,
-  SENIOR = 2,
+  Junior = 0,
+  MidLevel = 1,
+  Senior = 2,
 }
 
 

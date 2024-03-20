@@ -2,38 +2,38 @@ class Worker
 {
   private string Name;
   private double BaseSalary;
-  private WorkerLevel level;
-  private Department department;
-  private List<Contract> contracts = new List<Contract>();
+  private WorkerLevel Level;
+  private Department Department;
+  private List<Contract> Contracts = new List<Contract>();
 
 
   public Worker(string name, double baseSalary, WorkerLevel level, string departmentOfWorker)
   {
     Name = name;
     BaseSalary = baseSalary;
-    this.level = level;
-    this.department = new Department(departmentOfWorker);
+    Level = level;
+    Department = new Department(departmentOfWorker);
   }
 
 
   public void ShowObjectWorker()
   {
-    System.Console.WriteLine($"{Name}; {BaseSalary:C}; {level}; {department.Name}");
+    System.Console.WriteLine($"{Name}; {BaseSalary:C}; {Level}; {Department.Name}");
   }
 
   public void addContract(Contract contract)
   {
-    contracts.Add(contract);
+    Contracts.Add(contract);
   }
 
-  public void removeContract(Contract contract)
-  {
-    contracts.Remove(contract);
-  }
+  // public void removeContract(Contract contract)
+  // {
+  //   Contracts.Remove(contract);
+  // }
 
   public void ShowAllContracts()
   {
-    foreach (var contract in contracts)
+    foreach (var contract in Contracts)
     {
       contract.ShowObjectContract();
     }
@@ -41,15 +41,14 @@ class Worker
 
   public double Income(int month, int year)
   {
-    double totalIncoming = 0.0;
+    double totalIncoming = BaseSalary;
 
-    foreach (var contract in contracts)
+    foreach (Contract contract in Contracts)
     {
 
 
-      if (contract.date.Month == month && contract.date.Year == year)
+      if (contract.Date.Month == month && contract.Date.Year == year)
       {
-        System.Console.WriteLine($"Achei -> {contract.TotalValue()}");
         totalIncoming += contract.TotalValue();
       }
     }
